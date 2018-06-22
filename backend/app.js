@@ -9,7 +9,7 @@ var app = express();
 var project_routes = require('./routes/project');
 
 //middlewares
-//para que todo lo que llegue por post, get etc lo convierta a json
+//para que todo lo que llegue por body lo convierta a un objeto json
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
