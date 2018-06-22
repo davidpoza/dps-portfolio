@@ -44,7 +44,19 @@ var controller = {
             });
 
         });
-    }
+    },
+    getProjects: function(req,res){
+        Project.find({}).exec((err, projects) => {
+            if(err) return res.status(500). send({message: 'Error al devolver los datos.'});
+
+            if(!projects) return res.status(404).send({message: 'No hay proyectos que mostrar'});
+
+            return res.status(200).send({
+                projects
+            });
+
+        });
+    },
 }
 
 module.exports = controller;
