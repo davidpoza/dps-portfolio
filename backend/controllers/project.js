@@ -71,6 +71,20 @@ var controller = {
             });
         });
 
+    },
+    deleteProject: function(req,res){
+        var projectId = req.params.id;
+
+        Project.findByIdAndRemove(projectId, (err,projectDeleted) => {
+            if(err) return res.status(500). send({message: 'Error al devolver los datos.'});
+
+            if(!projectDeleted) return res.status(404).send({message: 'No existe el proyecto a borrar'});
+
+            return res.status(200).send({
+                project: projectDeleted
+            });
+        });
+
     }
 }
 
